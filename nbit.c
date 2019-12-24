@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-
+#include <string.h>
 
 int	nbit(int n, int i)
 {
@@ -40,11 +40,13 @@ int	power(int n, int f)
   return (1);
 }
 
-int	bitmask_to_nb(char *str, int length)
+int	bitmask_to_nb(char *str)
 {
   int	n;
   int	i;
+  int	length;
 
+  length = strlen(str);
   n = i = 0;
   while (str[i])
     {
@@ -66,7 +68,7 @@ int	main(void)
       return (EXIT_FAILURE);
     }
   printf("%s\n", str);
-  nb = bitmask_to_nb(str, 8);
+  nb = bitmask_to_nb(str);
   printf("nb: %d\n", nb);
   printf("2 puissance 4 : %d\n", power(2, 4));
   return (EXIT_SUCCESS);
