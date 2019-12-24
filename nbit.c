@@ -2,6 +2,12 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+
+int	nbit(int n, int i)
+{
+  return ((n & (1 << i)) >> i);
+}
+
 char	*nb_to_bitmask(int n, int length)
 {
   char	*str;
@@ -16,7 +22,7 @@ char	*nb_to_bitmask(int n, int length)
     }
   while (i < length)
     {
-      str[length - i - 1] = ((n & (1 << i)) >> i) + 48;
+      str[length - i - 1] = nbit(n, i)  + 48;
       i++;
     }
   str[length] = 0;
@@ -25,6 +31,8 @@ char	*nb_to_bitmask(int n, int length)
 
 int	power(int n, int f)
 {
+  if (f < 0)
+    return (0);
   if (f > 0)
     {
       return (n * power(n, f - 1));
